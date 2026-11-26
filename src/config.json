@@ -13,26 +13,15 @@
 
   "//": "PL_TARGET_DENSITY_PCT - You can increase this if Global Placement fails with error GPL-0302.",
   "//": "Users have reported that values up to 80 worked well for them.",
-  "//": "88: the design is 79% of the free core before the flow adds its buffers.",
-  "PL_TARGET_DENSITY_PCT": 88,
-
-  "//": "A micro tile is 2999 um2 of core. The PDK's list of cells that synthesis may not use (no_synth.cells) holds every drive-strength-1 gate and flop, so that the netlist starts at strength 2 and the resizer has room: on this tile that is a third of the area. src/no_synth.cells is the PDK's list (open_pdks 8afc834) without the _1 gates and dfxtp_1; the resizer still upsizes where timing asks.",
-  "SYNTH_EXCLUDED_CELL_FILE": "dir::no_synth.cells",
+  "PL_TARGET_DENSITY_PCT": 60,
 
   "//": "CLOCK_PERIOD - Increase this in case you are getting setup time violations.",
-  "//": "The value is in nanoseconds, so 20ns == 50MHz. 39 ns: the 25.175 MHz VGA pixel clock (39.72 ns).",
-  "CLOCK_PERIOD": 39,
+  "//": "The value is in nanoseconds, so 20ns == 50MHz.",
+  "CLOCK_PERIOD": 20,
 
   "//": "Hold slack margin - Increase them in case you are getting hold violations.",
-  "//": "0.04 / 0.03 (local run t5): the worst hold slack before any repair is +0.05 ns over LibreLane's 0.25 ns clock uncertainty; the default 0.1 margin bought 16 delay cells (160 um2, 5% of the tile) and took the router from 8 iterations to 30.",
   "PL_RESIZER_HOLD_SLACK_MARGIN": 0.04,
   "GRT_RESIZER_HOLD_SLACK_MARGIN": 0.03,
-
-  "//": "A clock tree for 39 flops within 65 um: one sink cluster and small buffers (five clkbuf_16 by default, 125 um2; ten clkbuf_4, 75 um2, with these).",
-  "CTS_SINK_CLUSTERING_SIZE": 64,
-  "CTS_SINK_CLUSTERING_MAX_DIAMETER": 120,
-  "CTS_ROOT_BUFFER": "sky130_fd_sc_hd__clkbuf_4",
-  "CTS_CLK_BUFFERS": ["sky130_fd_sc_hd__clkbuf_2", "sky130_fd_sc_hd__clkbuf_4"],
 
   "//": "RUN_LINTER, LINTER_INCLUDE_PDK_MODELS - Disabling the linter is not recommended!",
   "RUN_LINTER": 1,
